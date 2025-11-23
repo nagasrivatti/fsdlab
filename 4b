@@ -1,0 +1,29 @@
+import React, { useState } from "react";
+
+export default function App() {
+  const [msg, setMsg] = useState("Click a button to see event response");
+
+  const handleClick = () => setMsg("Button Clicked!");
+  const handleMouse = () => setMsg("Mouse Hover Event Triggered!");
+  const handleInput = (e) => setMsg("You typed: " + e.target.value);
+
+  return (
+    <div>
+      <h2>Event Handling Example</h2>
+
+      <p>{msg}</p>
+
+      <button onClick={handleClick}>Click Me</button>
+      <br /><br />
+
+      <button onMouseOver={handleMouse}>Hover Over Me</button>
+      <br /><br />
+
+      <input 
+        type="text" 
+        placeholder="Type here" 
+        onChange={handleInput} 
+      />
+    </div>
+  );
+}
