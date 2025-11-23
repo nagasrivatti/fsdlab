@@ -1,0 +1,41 @@
+import React from "react";
+
+export default function App() {
+  return (
+    <div>
+      <h1>React HTML Rendering</h1>
+      <h3>Example of different HTML elements</h3>
+
+      <p><b>This is bold text</b> and <i>this is italic text</i>.</p>
+
+      <img 
+        src="https://via.placeholder.com/120" 
+        alt="sample" 
+        width="120"
+      />
+
+      <button>Click Me</button>
+
+      <hr />
+
+      <h4>Items List</h4>
+      <ul>
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Banana</li>
+      </ul>
+
+      <h4>Simple Table</h4>
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+        </tr>
+        <tr>
+          <td>Likki</td>
+          <td>95</td>
+        </tr>
+      </table>
+    </div>
+  );
+}
