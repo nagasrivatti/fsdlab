@@ -1,0 +1,28 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+let users = [];
+
+// POST → accept data
+app.post("/users", (req, res) => {
+  users.push(req.body);
+  res.send("User added");
+});
+
+// GET → retrieve data
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+// DELETE → delete specific resource by id
+app.delete("/users/:id", (req, res) => {
+  const id = req.params.id;
+  users = users.filter(u => u.id != id);
+  res.send("User deleted with id: " + id);
+});
+
+app.listen(3000, () => {
+  console.log("Server running at: http://localhost:3000/");
+});
