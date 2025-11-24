@@ -5,24 +5,37 @@ app.use(express.json());
 
 let users = [];
 
-// POST → accept data
+// POST → Add user
 app.post("/users", (req, res) => {
   users.push(req.body);
   res.send("User added");
 });
 
-// GET → retrieve data
+// GET → Get all users
 app.get("/users", (req, res) => {
   res.json(users);
 });
 
-// DELETE → delete specific resource by id
+// PUT → Update user by id
+app.put("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const index = users.findIndex(u => u.id == id);
+
+  if (index === -1) {
+    return res.send("User not found");
+  }
+
+  users[index] = { ...users[index], ...req.body };
+  res.send("User updated");
+});
+
+// DELETE → Delete user by id
 app.delete("/users/:id", (req, res) => {
   const id = req.params.id;
   users = users.filter(u => u.id != id);
-  res.send("User deleted with id: " + id);
+  res.send("User deleted");
 });
 
 app.listen(3000, () => {
-  console.log("Server running at: http://localhost:3000/");
+  console.log("Server running on port 3000");
 });
